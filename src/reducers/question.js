@@ -14,9 +14,14 @@ export default (state = initialState, { type, payload }) => {
     case NEW_QUESTION:
       return {
         ...state,
-        questions: [...state.questions, payload],
+        questions: addToQuestionIfNotExists(state.questions, payload),
       };
     default:
       return state;
   }
 };
+
+
+const addToQuestionIfNotExists = (questions, question) =>
+  questions.some(q => q._id === question._id) ? questions : [...questions, question];
+

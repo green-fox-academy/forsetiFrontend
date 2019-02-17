@@ -23,13 +23,14 @@ export const fetchQuestions = () => {
 
 export const addQuestion = ({ text, body }) => {
   return (dispatch) => {
+    const elementToSend = { text, body };
     return fetch(`${BASE_URI}/`,
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ text, body }),
+        body: JSON.stringify({ text: text, body: body }),
       }
     )
       .then(response => response.json())
