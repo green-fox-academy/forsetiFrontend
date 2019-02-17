@@ -2,7 +2,7 @@ import React from 'react';
 import { AppBar } from '@material-ui/core';
 
 const Header = () => (
-  <AppBar id="header">
+  <AppBar className="header">
     {`Forseti`.toUpperCase()}
   </AppBar >
 );

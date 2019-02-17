@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, CardContent, Button, CardActions } from '@material-ui/core';
-
+import { Card, CardContent, Button, CardActions, TextField, Fab } from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
 import { connect } from 'react-redux';
 import { addQuestion } from '../actions/question';
 
@@ -13,6 +13,7 @@ class NewQuestion extends Component {
       text: '',
       body: '',
     };
+
     this.handleChange = (event) => {
       const { target: { name, value } } = event;
       this.setState({ [name]: value });
@@ -21,21 +22,36 @@ class NewQuestion extends Component {
 
   render() {
     return (
-      <Card style={{ backgroundColor: 'green' }}>
+      <Card color="primary">
         ADD QUESTION:
         <CardContent>
-          TEXT:<input name="text" type="text" onChange={this.handleChange}></input>
-          BODY:<input name="body" type="text" onChange={this.handleChange}></input>
+          <TextField
+            id="standard-name"
+            name="text"
+            label="text"
+            value={this.state.text}
+            onChange={this.handleChange}
+            margin="normal"
+          />
+          <TextField
+            id="standard-name"
+            name="body"
+            label="body"
+            value={this.state.body}
+            onChange={this.handleChange}
+            margin="normal"
+          />
         </CardContent>
         <CardActions>
           <Button
-            style={{ justifyContent: "center", width: '100%' }}
             title={'ADD Question'}
             onClick={() =>
               this.props.addQ({ text: this.state.text, body: this.state.body })
             }>
-            ADD QUESTION
-            </Button>
+            <AddIcon >
+              +
+            </AddIcon>
+          </Button>
         </CardActions>
       </Card >
     );

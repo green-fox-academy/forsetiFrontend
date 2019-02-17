@@ -1,18 +1,19 @@
 body {
-  display: flex;
   background-color: green;
-  * {
-    margin: 200px;
-  };
+
 
   p {
     color: red;
-  }
+  };
 
-  #header {
-    background-color: beige;
-  }
+ 
 
-}
+};
 
 
+
+
+.header {
+  color: black;
+  background-color: black;
+};

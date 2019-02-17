@@ -1,12 +1,7 @@
 import React from 'react';
+import { CardHeader } from '@material-ui/core';
 
-const CardTitle = ({ details: { text, body } }) => {
-  return (
-    <div>
-      <h1>{text}</h1>
-      <h2>{body}</h2>
-    </div>
-  );
-};
+const CardTitle = ({ details: { text, body } }) => (
+  <CardHeader title={text} subheader={body} />);
 
 export default CardTitle;
