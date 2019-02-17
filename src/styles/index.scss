@@ -1,7 +1,14 @@
 body {
   display: flex;
 
+  
   p {
     color: red;
   }
 }
+
+.wrapper {
+  background-color: tomato;
+  width: 200px;
+  height: 200px;
+};

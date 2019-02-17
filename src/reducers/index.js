@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
 import ui from './ui';
+import question from './question';
 
-// Add your new reducer here
 const reducers = {
-  ui
+  ui,
+  question
 };
 
 const rootReducer = combineReducers(reducers);
