@@ -1,4 +1,4 @@
-import { FECTH_QUESTIONS } from "../constants/action_types";
+import { FECTH_QUESTIONS, NEW_QUESTION } from '../constants/action_types';
 
 const initialState = {
   questions: []
@@ -10,6 +10,11 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         questions: payload
+      };
+    case NEW_QUESTION:
+      return {
+        ...state,
+        questions: [...state.questions, payload],
       };
     default:
       return state;

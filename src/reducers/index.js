@@ -1,9 +1,7 @@
 import { combineReducers } from 'redux';
-import ui from './ui';
 import question from './question';
 
 const reducers = {
-  ui,
   question
 };
 
