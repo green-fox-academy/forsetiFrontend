@@ -28,7 +28,7 @@ class App extends React.Component {
 
 const renderQuestions = questions =>
   questions ? questions
-    .map(question => (<Question id={question._id} key={question._id} />)) : (<div>Not yet</div>);
+    .map(question => (<Question key={question._id} id={question._id} />)) : (<div>Not yet</div>);
 
 const mapDispatchToProps = dispatch => ({
   fetchQuestions: () => dispatch(fetchQuestions())

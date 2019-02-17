@@ -5,3 +5,4 @@ export const UI_ACTIONS = {
 
 export const FECTH_QUESTIONS = 'FECTH_QUESTIONS';
 export const NEW_QUESTION = 'NEW_QUESTION';
+export const NEW_ANSWER = 'NEW_ANSWER';
