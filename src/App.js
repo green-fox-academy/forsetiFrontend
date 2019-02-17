@@ -2,10 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as UI_ACTIONS from './actions/ui_actions';
+import { fetchQuestions } from './actions/question';
 import './styles/index.scss';
-import { Card } from '@material-ui/core';
 
 class App extends React.Component {
+  componentWillMount() {
+    this.props.fetchQuestions();
+  }
 
   render() {
     const { userName, count, webSite } = this.props.ui;
@@ -19,17 +22,14 @@ class App extends React.Component {
           Count is {count}
           <button onClick={this.props.uiActions.incrementCount}>INCREMENT COUNT</button>
         </div>
-        <Card>
-          asdasd
-          asdasd
-        </Card>
       </div >
     );
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  uiActions: bindActionCreators(UI_ACTIONS, dispatch)
+  uiActions: bindActionCreators(UI_ACTIONS, dispatch),
+  fetchQuestions: () => dispatch(fetchQuestions())
 });
 
 const mapStateToProps = state => ({
