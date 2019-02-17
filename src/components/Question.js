@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardActionArea, CardActions, Button } from '@material-ui/core';
 import { connect } from 'react-redux';
+import CardTitle from './CardTitle';
 
 import { addAnswerToQuestion } from '../actions/question';
 
@@ -21,11 +22,11 @@ export class Question extends Component {
   render() {
     const { id, questions } = this.props;
     const question = getQuestionByIdProp(id, questions);
+    const { text, body } = question;
     return (
-      <Card>
+      <Card >
+        <CardTitle details={{ text, body }} />
         <div style={{ display: 'flex', }}>
-          <h1 >{question.text}</h1>
-          <h2 >{question.body}</h2>
           <input name="text" type="text" placeholder="Add new Answer" onChange={this.handleChange}></input>
           <button onClick={addAnswerToQuestion({ questionId: this.state.questionId, text: this.state.text })}>Add answer</button>
         </div>
@@ -65,4 +66,5 @@ const mapDispatchToProps = {
 const getQuestionByIdProp = (_id, questions) => questions.filter(q => q._id === _id)[0];
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Question)
+export default connect(mapStateToProps, mapDispatchToProps)(Question);
+

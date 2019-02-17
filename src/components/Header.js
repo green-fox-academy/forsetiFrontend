@@ -2,12 +2,9 @@ import React from 'react';
 import { AppBar } from '@material-ui/core';
 
 const Header = () => (
-  <AppBar style={{ paddingBottom: '10px' }}>
-    <div>
-
-      Forseti
-    </div>
-  </AppBar>
+  <AppBar id="header">
+    {`Forseti`.toUpperCase()}
+  </AppBar >
 );
 
 
