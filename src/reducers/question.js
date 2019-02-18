@@ -5,7 +5,8 @@ import {
 } from '../constants/action_types';
 
 const initialState = {
-  questions: []
+  questions: [],
+  collection: ''
 };
 
 export default (state = initialState, { type, payload }) => {

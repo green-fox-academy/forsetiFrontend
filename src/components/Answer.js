@@ -12,7 +12,7 @@ const Answer = ({ questionId, addAnswerToQuestion }) => (
       label={'new answer'} />
     <Fab
       size="small"
-      color="primary"
+      color="secondary"
       onClick={() => {
         const text = document.getElementById(`${questionId}`).value;
         sendIfNotEmpty(questionId, text, addAnswerToQuestion);
@@ -22,7 +22,6 @@ const Answer = ({ questionId, addAnswerToQuestion }) => (
   </div>
 );
 
-//TODO create separate action for new answer and
 const sendIfNotEmpty = (questionId, text, addAnswerToQuestion) => validNewAnswer(text) ? addAnswerToQuestion({ questionId, text }) : () => { };
 
 const validNewAnswer = text => text !== null && text.trim() !== '';

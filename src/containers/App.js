@@ -12,18 +12,19 @@ import '../styles/index.scss';
 const theme = createMuiTheme({
   palette: {
     primary: materialColor.teal,
-    secondary: materialColor.lightBlue,
+    secondary: materialColor.blueGrey,
     background: materialColor.teal,
+    action: materialColor.deepOrange,
   },
   typography: {
     useNextVariants: true,
   },
   spacing: {
-    unit: 15
+    unit: 20,
   },
   shape: {
-    borderRadius: 15
-  }
+    borderRadius: 15,
+  },
 });
 
 
