@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 const AnswerButton = ({ questionId, answer, addAnswerToQuestion }) => (
   <Button
     color="primary"
-    style={{ flexGrow: answer.occurancy }}
     onClick={() => addAnswerToQuestion({ questionId: questionId, text: answer.text })}
   >
     {`${answer.text} (${answer.occurancy})`}

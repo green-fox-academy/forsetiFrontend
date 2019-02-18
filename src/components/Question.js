@@ -9,10 +9,10 @@ import AnswerButton from "./AnswerButton"
 export const Question = ({ question }) => {
   const { text, body } = question;
   return (
-    <Card >
+    <Card display={{ display: 'flex' }}>
       <CardTitle details={{ text, body }} />
       <Answer questionId={question._id} />
-      <CardActions >
+      <CardActions style={{ justifyContent: 'space-between' }}>
         {
           generateButtons(question)
         }
@@ -22,9 +22,9 @@ export const Question = ({ question }) => {
 };
 
 const generateButtons = question =>
-  question.answers ? question.answers.map(
+  question.answers ? question.answers.sort((ans1, ans2) => ans2.occurancy - ans1.occurancy).map(
     answer => <AnswerButton key={answer._id} answer={answer} questionId={question._id} />)
-    : (<div>No answer yet...</div>);
+    : <div>No answer yet...</div>;
 
 const mapStateToProps = state => ({
   questions: state.question.questions
