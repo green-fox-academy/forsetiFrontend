@@ -1,4 +1,8 @@
-import { FECTH_QUESTIONS, NEW_QUESTION, NEW_ANSWER } from '../constants/action_types';
+import {
+  FECTH_QUESTIONS,
+  NEW_QUESTION,
+  UPDATED_QUESTION
+} from '../constants/action_types';
 
 const BASE_URI = 'http://localhost:3001/question';
 const headerType = (body, method) => ({
@@ -8,7 +12,6 @@ const headerType = (body, method) => ({
   },
   body: JSON.stringify(body),
 });
-
 
 export const load_questions = questions => ({
   type: FECTH_QUESTIONS,
@@ -21,12 +24,7 @@ export const new_question = question => ({
 });
 
 export const updated_quesion = question => ({
-  type: NEW_QUESTION,
-  payload: question,
-});
-
-export const new_answer = question => ({
-  type: NEW_ANSWER,
+  type: UPDATED_QUESTION,
   payload: question,
 });
 
@@ -54,8 +52,15 @@ export const addQuestion = ({ text, body }) => {
 export const incrementAnswer = ({ questionId, answerId }) => {
   return (dispatch) => {
     return fetch(`${BASE_URI}/incrementanswer`,
-      headerType({ questionId, answerId }, 'PUT')
+      {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ questionId, answerId }),
+      }
     )
+      .then(response => response.json())
       .then(question => dispatch(updated_quesion(question)));
   };
 };
@@ -66,6 +71,7 @@ export const addAnswerToQuestion = ({ questionId, text }) => {
     return fetch(`${BASE_URI}/addnewanswer`,
       headerType({ questionId, text }, 'PUT')
     )
+      .then(response => response.json())
       .then(question => dispatch(updated_quesion(question)));
   };
 };

@@ -1,4 +1,4 @@
-import { FECTH_QUESTIONS, NEW_QUESTION } from '../constants/action_types';
+import { FECTH_QUESTIONS, UPDATED_QUESTION } from '../constants/action_types';
 
 const initialState = {
   questions: []
@@ -11,7 +11,8 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         questions: payload
       };
-    case NEW_QUESTION:
+    case UPDATED_QUESTION:
+      console.log(payload);
       return {
         ...state,
         questions: addToQuestionIfNotExists(state.questions, payload),
@@ -23,5 +24,5 @@ export default (state = initialState, { type, payload }) => {
 
 
 const addToQuestionIfNotExists = (questions, question) =>
-  questions.some(q => q._id === question._id) ? questions : [...questions, question];
+  questions.map(q => q._id === question._id ? q = question : q);
 

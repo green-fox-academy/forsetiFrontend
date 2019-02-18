@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardContent, Button, CardActions, TextField, Fab } from '@material-ui/core';
+import { Card, CardContent, Button, CardActions, TextField } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import { connect } from 'react-redux';
 import { addQuestion } from '../actions/question';
@@ -62,6 +62,5 @@ class NewQuestion extends Component {
 const mapDispatchToProps = dispatch => ({
   addQ: ({ text, body }) => dispatch(addQuestion({ text, body })),
 });
-
 
 export default connect(null, mapDispatchToProps)(NewQuestion);
