@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 const AnswerButton = ({ questionId, answer, addAnswerToQuestion }) => (
   <Button
     color="primary"
-    onClick={() => addAnswerToQuestion({ questionId: questionId, text: answer.text })}
+    onClick={() => addAnswerToQuestion({ questionId: questionId, asnwerId: answer._id })}
   >
     {`${answer.text} (${answer.occurancy})`}
   </Button>
@@ -15,6 +15,5 @@ const AnswerButton = ({ questionId, answer, addAnswerToQuestion }) => (
 const mapDispatchToProps = {
   addAnswerToQuestion
 };
-
 
 export default connect(null, mapDispatchToProps)(AnswerButton);
