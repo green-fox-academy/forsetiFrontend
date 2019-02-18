@@ -8,13 +8,13 @@ const Answer = ({ questionId, addAnswerToQuestion }) => (
   <div>
     <TextField
       placeholder="add new answer..."
-      id="answerText"
+      id={`${questionId}`}
       label={'new answer'} />
     <Fab
       size="small"
       color="primary"
       onClick={() => {
-        const text = document.querySelector('#answerText').value;
+        const text = document.getElementById(`${questionId}`).value;
         sendIfNotEmpty(questionId, text, addAnswerToQuestion);
       }}>
       <AddIcon />

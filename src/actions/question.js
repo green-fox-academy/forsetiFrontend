@@ -40,7 +40,13 @@ export const fetchQuestions = () => {
 export const addQuestion = ({ text, body }) => {
   return (dispatch) => {
     return fetch(`${BASE_URI}/`,
-      headerType({ text, body }, 'POST')
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ text, body }),
+      }
     )
       .then(response => response.json())
       .then(json => dispatch(new_question(json))
