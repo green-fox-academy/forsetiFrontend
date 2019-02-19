@@ -12,9 +12,7 @@ import '../styles/index.scss';
 const theme = createMuiTheme({
   palette: {
     primary: materialColor.teal,
-    secondary: materialColor.blueGrey,
-    background: materialColor.teal,
-    action: materialColor.deepOrange,
+    secondary: materialColor.pink,
   },
   typography: {
     useNextVariants: true,
@@ -23,7 +21,7 @@ const theme = createMuiTheme({
     unit: 20,
   },
   shape: {
-    borderRadius: 15,
+    borderRadius: 0,
   },
 });
 

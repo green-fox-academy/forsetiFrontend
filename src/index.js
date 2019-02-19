@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import rootReducer from './reducers';
 import App from './App';
 import history from './history';
-import Topic from './containers/Topic';
+import Topics from './containers/Topic';
 import Questionnaire from './containers/Questionnaire';
 import NPS from './components/NPS';
 
@@ -27,7 +27,7 @@ const baseComponent =
   <Router history={history}>
     <Provider store={store}>
       <App >
-        <Route exact path="/" component={Topic} />
+        <Route exact path="/" component={Topics} />
         <Route exact path="/questionnaire/:topic" component={Questionnaire} />
         <Route exact path="/nps/:topic" component={NPS} />
 

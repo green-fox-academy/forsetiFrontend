@@ -6,7 +6,6 @@ import {
 
 const initialState = {
   questions: [],
-  collection: ''
 };
 
 export default (state = initialState, { type, payload }) => {

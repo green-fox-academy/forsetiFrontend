@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import question from './question';
+import topics from './topics';
 
 const reducers = {
-  question
+  question,
+  topics
 };
 
 const rootReducer = combineReducers(reducers);

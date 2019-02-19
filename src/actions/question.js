@@ -4,7 +4,7 @@ import {
   UPDATED_QUESTION
 } from '../constants/action_types';
 
-const BASE_URI = 'http://localhost:3001/THOR';
+const BASE_URI = 'http://52.29.62.92:3000/test';
 const headerType = (body, method) => ({
   method: method,
   headers: {
