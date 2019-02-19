@@ -28,7 +28,7 @@ const theme = createMuiTheme({
 });
 
 
-class App extends React.Component {
+class Questionnaire extends React.Component {
   componentWillMount() {
     this.props.fetchQuestions();
   }
@@ -59,5 +59,5 @@ const mapStateToProps = state => ({
   questions: state.question.questions
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(Questionnaire);
 

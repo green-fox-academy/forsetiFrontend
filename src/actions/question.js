@@ -4,7 +4,7 @@ import {
   UPDATED_QUESTION
 } from '../constants/action_types';
 
-const BASE_URI = 'http://localhost:3001/question';
+const BASE_URI = 'http://localhost:3001/THOR';
 const headerType = (body, method) => ({
   method: method,
   headers: {
@@ -30,7 +30,7 @@ export const updated_quesion = question => ({
 
 export const fetchQuestions = () => {
   return (dispatch) => {
-    return fetch(`${BASE_URI}/all`)
+    return fetch(`${BASE_URI}`)
       .then(response => response.json())
       .then(json => dispatch(load_questions(json))
       );
