@@ -11,6 +11,7 @@ import history from './history';
 import Topics from './containers/Topic';
 import Questionnaire from './containers/Questionnaire';
 import NPS from './components/NPS';
+import Home from './components/Home';
 
 function configureStore(initialState) {
   return createStore(
@@ -18,7 +19,6 @@ function configureStore(initialState) {
     applyMiddleware(thunk)
   );
 }
-
 
 const store = configureStore({});
 
@@ -30,6 +30,7 @@ const baseComponent =
         <Route exact path="/" component={Topics} />
         <Route exact path="/questionnaire/:topic" component={Questionnaire} />
         <Route exact path="/nps/:topic" component={NPS} />
+        <Route exact path="/hi" component={Home} />
 
       </App>
     </Provider>
