@@ -7,7 +7,7 @@ import NewTopic from '../NewTopic';
 
 
 const TopicDrawer = ({ topics, getTopics }) =>
-  <Drawer variant="permanent" >
+  <Drawer variant="permanent" color="secondary" >
     <List>
       <ListItem>
         <ListItemText color="primary" primary="Forseti" secondary="the questionnaire" />

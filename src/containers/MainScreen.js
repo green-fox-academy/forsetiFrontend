@@ -21,11 +21,6 @@ const theme = createMuiTheme({
   shape: {
     borderRadius: 5,
   },
-  transitions: {
-    easing: {
-
-    }
-  }
 });
 
 const MainScreen = () => (

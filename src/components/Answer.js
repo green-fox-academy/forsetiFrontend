@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Fab, TextField } from '@material-ui/core';
+import { Fab, TextField, Card } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import { addAnswerToQuestion } from '../actions/question';
 
 const Answer = ({ questionId, addAnswerToQuestion }) => (
-  <div>
+  <div style={{ width: 200, display: 'flex', margin: 15 }}>
     <TextField
       placeholder="add new answer..."
       id={`${questionId}`}
