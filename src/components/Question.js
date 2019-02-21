@@ -15,13 +15,16 @@ const styles = createStyles({
     direction: 'ltr',
     display: 'flex',
     justifyContent: 'space-between',
+  },
+  card: {
+    padding: 20,
   }
 });
 
 export const Question = ({ question }) => {
   const { text, body } = question;
   return (
-    <Card>
+    <Card style={styles.card}>
       <div style={styles.questionSection}>
         <CardTitle details={{ text, body }} />
         <Answer questionId={question._id} />

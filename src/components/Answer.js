@@ -5,7 +5,7 @@ import AddIcon from '@material-ui/icons/Add';
 import { addAnswerToQuestion } from '../actions/question';
 
 const Answer = ({ questionId, addAnswerToQuestion }) => (
-  <div style={{ width: 200, display: 'flex', margin: 15 }}>
+  <div style={{ margin: 25 }}>
     <TextField
       placeholder="add new answer..."
       id={`${questionId}`}

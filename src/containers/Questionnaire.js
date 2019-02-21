@@ -31,8 +31,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  questions: state.question.questions
+  ...state.question
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Questionnaire);
-

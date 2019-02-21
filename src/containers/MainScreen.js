@@ -4,13 +4,19 @@ import { createMuiTheme, MuiThemeProvider, AppBar } from '@material-ui/core';
 import * as materialColor from '@material-ui/core/colors';
 import TopicDrawer from '../components/Drawer/TopicDrawer';
 import Questionnaire from './Questionnaire';
-
+import palette from '../styles/theme.json';
 
 const theme = createMuiTheme({
-  palette: {
-    primary: materialColor.teal,
-    secondary: materialColor.pink,
-  },
+  palette: { ...palette.palette },
+  //   primary: materialColor.teal,
+  //   secondary: materialColor.pink,
+  //   background: {
+  //     paper: materialColor.grey,
+  //     default: materialColor.grey,
+  //   },
+  //   common: materialColor.grey,
+  //   contrastThreshold: 3,
+  // },
   direction: 'ltr',
   spacing: {
     unit: 30,
@@ -21,19 +27,16 @@ const theme = createMuiTheme({
   shape: {
     borderRadius: 5,
   },
+
 });
 
 const MainScreen = () => (
   <MuiThemeProvider theme={theme}>
-    <div>
-      <TopicDrawer />
-      <div style={{ paddingLeft: 200 }}>
-        <Questionnaire />
-      </div>
+    <TopicDrawer />
+    <div style={{ paddingLeft: 200 }}>
+      <Questionnaire />
     </div>
   </MuiThemeProvider>
 );
-
-
 
 export default MainScreen;
