@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Card, CardActions, createStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
-import CardTitle from './CardTitle';
 import Answer from './Answer';
 import AnswerButton from './AnswerButton';
+import QuestionItem from '../components/QuestionItem';
 
 const styles = createStyles({
   cardWrapper: {
@@ -22,11 +22,10 @@ const styles = createStyles({
 });
 
 export const Question = ({ question }) => {
-  const { text, body } = question;
   return (
     <Card style={styles.card}>
       <div style={styles.questionSection}>
-        <CardTitle details={{ text, body }} />
+        <QuestionItem question={question} />
         <Answer questionId={question._id} />
       </div>
       <CardActions style={styles.cardWrapper}>

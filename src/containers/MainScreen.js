@@ -7,16 +7,7 @@ import Questionnaire from './Questionnaire';
 import palette from '../styles/theme.json';
 
 const theme = createMuiTheme({
-  palette: { ...palette.palette },
-  //   primary: materialColor.teal,
-  //   secondary: materialColor.pink,
-  //   background: {
-  //     paper: materialColor.grey,
-  //     default: materialColor.grey,
-  //   },
-  //   common: materialColor.grey,
-  //   contrastThreshold: 3,
-  // },
+  palette: { ...palette.palette, type: 'dark' },
   direction: 'ltr',
   spacing: {
     unit: 30,
@@ -25,7 +16,8 @@ const theme = createMuiTheme({
     useNextVariants: true,
   },
   shape: {
-    borderRadius: 5,
+    borderRadius: 10,
+
   },
 
 });

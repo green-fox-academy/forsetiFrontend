@@ -3,6 +3,13 @@ import { connect } from 'react-redux';
 import { fetchQuestions } from '../actions/question';
 import NewQuestion from '../components/NewQuestion';
 import Question from '../components/Question';
+import { createStyles } from '@material-ui/core';
+
+const styles = createStyles({
+  cardLayout: {
+    // padding: 15,
+  }
+});
 
 class Questionnaire extends React.Component {
   componentWillMount() {
@@ -12,7 +19,7 @@ class Questionnaire extends React.Component {
   render() {
     const { questions } = this.props;
     return (
-      <div>
+      <div style={styles.cardLayout}>
         {
           renderQuestions(questions)
         }
@@ -24,11 +31,11 @@ class Questionnaire extends React.Component {
 
 const renderQuestions = questions =>
   questions ? questions
-    .map(question => (<Question key={question._id} question={question} />)) : (<div>Loading...</div>);
+    .map(question => <Question key={question._id} question={question} />) : (<div>Loading...</div>);
 
-const mapDispatchToProps = dispatch => ({
-  fetchQuestions: () => dispatch(fetchQuestions())
-});
+const mapDispatchToProps = {
+  fetchQuestions
+};
 
 const mapStateToProps = state => ({
   ...state.question
