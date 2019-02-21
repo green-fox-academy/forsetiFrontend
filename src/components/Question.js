@@ -5,24 +5,28 @@ import CardTitle from './CardTitle';
 import Answer from './Answer';
 import AnswerButton from './AnswerButton';
 
-
-
 const styles = createStyles({
-  wrapper: {
+  cardWrapper: {
     display: 'inline-table',
     justifyContent: 'space-around',
   },
+  questionSection:
+  {
+    direction: 'ltr',
+    display: 'flex',
+    justifyContent: 'space-between',
+  }
 });
 
 export const Question = ({ question }) => {
   const { text, body } = question;
   return (
     <Card>
-      <div style={{ direction: 'ltr', display: 'flex', justifyContent: 'space-between' }}>
+      <div style={styles.questionSection}>
         <CardTitle details={{ text, body }} />
         <Answer questionId={question._id} />
       </div>
-      <CardActions style={styles.wrapper}>
+      <CardActions style={styles.cardWrapper}>
         {
           generateButtons(question)
         }

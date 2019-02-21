@@ -28,9 +28,6 @@ const MainScreen = () => (
     <div>
       <TopicDrawer />
       <div style={{ paddingLeft: 200 }}>
-        <AppBar >
-          Questionnaire
-        </AppBar>
         <Questionnaire />
       </div>
     </div>

@@ -1,11 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchQuestions } from '../actions/question';
-import Header from '../components/Header';
 import NewQuestion from '../components/NewQuestion';
 import Question from '../components/Question';
-
-
 
 class Questionnaire extends React.Component {
   componentWillMount() {
@@ -16,7 +13,6 @@ class Questionnaire extends React.Component {
     const { questions } = this.props;
     return (
       <div>
-        <Header />
         {
           renderQuestions(questions)
         }
