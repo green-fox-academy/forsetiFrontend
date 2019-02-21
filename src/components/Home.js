@@ -4,28 +4,27 @@ import NewTopic from './NewTopic';
 import QuestionItem from './QuestionItem';
 
 const fetchTopics = (getTopics) => {
-    getTopics();
-    return (
-      <div>Loading...</div>
-    );
-  };
-  
-const renderTopics = topics => topics.map(topic => (
-    <TopicItem topic={topic}></TopicItem>
-  ));
+  getTopics();
+  return (
+    <div>Loading...</div>
+  );
+};
 
-const q = {text: 'Q', body: 'qb'};
+const renderTopics = topics => topics.map(topic => (
+  <TopicItem topic={topic}></TopicItem>
+));
+
+const q = { text: 'Q', body: 'qb' };
 
 const Home = ({ topics }) => (
   <div>
-   {topics = ['a', 'b', 'c']}
-   {topics.length !== 0 ? renderTopics(topics) : fetchTopics(()=> console.log('HI'))}
+    {topics = ['a', 'b', 'c']}
+    {topics.length !== 0 ? renderTopics(topics) : fetchTopics(() => console.log('HI'))}
     <QuestionItem question={q}></QuestionItem>
-   <NewTopic></NewTopic>
+    <NewTopic></NewTopic>
   </div>
 );
 
 export default Home;
 
-  
-  
+

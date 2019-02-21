@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import { createMuiTheme, MuiThemeProvider, Button, AppBar } from '@material-ui/core';
+import { createMuiTheme, MuiThemeProvider, AppBar } from '@material-ui/core';
 import * as materialColor from '@material-ui/core/colors';
-import TopicDrawer from './TopicDrawer';
+import TopicDrawer from '../components/Drawer/TopicDrawer';
 import Questionnaire from './Questionnaire';
 
 
@@ -11,28 +11,37 @@ const theme = createMuiTheme({
     primary: materialColor.teal,
     secondary: materialColor.pink,
   },
+  direction: 'ltr',
+  spacing: {
+    unit: 30,
+  },
   typography: {
     useNextVariants: true,
   },
   shape: {
-    borderRadius: 10,
+    borderRadius: 5,
   },
+  transitions: {
+    easing: {
+
+    }
+  }
 });
 
-export default class MainScreen extends Component {
-  render() {
-    return (
-      // <MuiThemeProvider theme={theme}>
-      <div>
-        <TopicDrawer />
-        <div style={{ paddingLeft: 200 }}>
-          <AppBar >
-            Questionnaire
-          </AppBar>
-          <Questionnaire />
-        </div>
+const MainScreen = () => (
+  <MuiThemeProvider theme={theme}>
+    <div>
+      <TopicDrawer />
+      <div style={{ paddingLeft: 200 }}>
+        <AppBar >
+          Questionnaire
+        </AppBar>
+        <Questionnaire />
       </div>
-      // </MuiThemeProvider>
-    );
-  }
-}
+    </div>
+  </MuiThemeProvider>
+);
+
+
+
+export default MainScreen;

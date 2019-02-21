@@ -4,26 +4,7 @@ import { fetchQuestions } from '../actions/question';
 import Header from '../components/Header';
 import NewQuestion from '../components/NewQuestion';
 import Question from '../components/Question';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
-import * as materialColor from '@material-ui/core/colors';
 
-import '../styles/index.scss';
-
-const theme = createMuiTheme({
-  palette: {
-    primary: materialColor.teal,
-    secondary: materialColor.pink,
-  },
-  typography: {
-    useNextVariants: true,
-  },
-  spacing: {
-    unit: 20,
-  },
-  shape: {
-    borderRadius: 0,
-  },
-});
 
 
 class Questionnaire extends React.Component {
@@ -34,13 +15,13 @@ class Questionnaire extends React.Component {
   render() {
     const { questions } = this.props;
     return (
-      <MuiThemeProvider theme={theme}>
+      <div>
         <Header />
         {
           renderQuestions(questions)
         }
         <NewQuestion />
-      </MuiThemeProvider>
+      </div>
     );
   }
 }

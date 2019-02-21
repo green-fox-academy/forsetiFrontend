@@ -4,14 +4,10 @@ import {
   UPDATED_QUESTION
 } from '../constants/action_types';
 
+import { sendHBodyWithMethod } from './utils';
+
 const BASE_URI = 'http://52.29.62.92:3000/test';
-const headerType = (body, method) => ({
-  method: method,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(body),
-});
+
 
 export const load_questions = questions => ({
   type: FECTH_QUESTIONS,
@@ -75,7 +71,7 @@ export const incrementAnswer = ({ questionId, answerId }) => {
 export const addAnswerToQuestion = ({ questionId, text }) => {
   return (dispatch) => {
     return fetch(`${BASE_URI}/addnewanswer`,
-      headerType({ questionId, text }, 'PUT')
+      sendHBodyWithMethod({ questionId, text }, 'PUT')
     )
       .then(response => response.json())
       .then(question => dispatch(updated_quesion(question)));

@@ -2,5 +2,6 @@ export const FECTH_QUESTIONS = 'FECTH_QUESTIONS';
 export const NEW_QUESTION = 'NEW_QUESTION';
 export const UPDATED_QUESTION = 'UPDATED_QUESTION';
 export const FETCH_TOPICS = 'UPDATED_QUESTION';
+export const NEW_TOPIC = 'NEW_TOPIC';
 
 

@@ -1,4 +1,4 @@
-import { FETCH_TOPICS } from '../constants/action_types';
+import { FETCH_TOPICS, NEW_TOPIC } from '../constants/action_types';
 
 const initialState = {
   topics: []
@@ -10,6 +10,11 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         topics: [...payload],
+      };
+    case NEW_TOPIC:
+      return {
+        ...state,
+        topics: [...state.topics, payload]
       };
     default:
       return state;

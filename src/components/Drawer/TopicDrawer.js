@@ -2,19 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Divider, Drawer, CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
 import { connect } from 'react-redux';
-import { getTopics } from '../actions/topics';
+import { getTopics } from '../../actions/topics';
+import NewTopic from '../NewTopic';
 
 
 const TopicDrawer = ({ topics, getTopics }) =>
   <Drawer variant="permanent" >
     <List>
       <ListItem>
-        <ListItemText color="primary" primary="Forseti" secondary="the questionnaire"></ListItemText>
-        <Divider />
+        <ListItemText color="primary" primary="Forseti" secondary="the questionnaire" />
       </ListItem>
+    </List>
+    <Divider />
+    <List>
       {
         drawer(topics, getTopics)
       }
+      <NewTopic />
     </List>
   </Drawer >;
 

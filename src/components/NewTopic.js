@@ -1,35 +1,42 @@
 import React from 'react';
-import { Fab, TextField } from '@material-ui/core';
+import { Fab, TextField, CardActions, CardContent, Card } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import { connect } from 'react-redux';
+import { addNewTopic } from '../actions/topics';
 
-
-const NewTopic = ({ }) => (
-  <div>
-    <Card>
-      <CardContent>
-        <TextField
-          placeholder="add new topic..."
-          id="new"
-          label={'new topic'} />
-      </CardContent>
-      <CardActions>
-        <Fab
-          size="small"
-          color="secondary"
-          onClick={() => {
-            const text = document.getElementById("new").value;
-            console.log(text);
-          }}>
-          <AddIcon />
-        </Fab>
-      </CardActions>
-    </Card>
-  </div>
+const NewTopic = ({ addNewTopic, topics }) => (
+  <Card color="primary">
+    <CardContent>
+      <TextField
+        placeholder="add new topic..."
+        id="new"
+        label={'new topic'} />
+    </CardContent>
+    <CardActions>
+      <Fab
+        size="small"
+        color="secondary"
+        onClick={() => {
+          const newTopicElement = document.getElementById('new');
+          addIfNotExists(topics, newTopicElement, addNewTopic);
+        }}>
+        <AddIcon />
+      </Fab>
+    </CardActions>
+  </Card>
 );
 
+const topicNotExists = (topics, newTopic) => !topics.includes(newTopic.value);
 
-export default NewTopic;
+const addIfNotExists = (topics, newTopic, addNewTopic) =>
+  topicNotExists(topics, newTopic) ? addNewTopic(newTopic.value) : newTopic.value = '';
+
+const mapDispatchToProps = {
+  addNewTopic
+};
+
+const mapStateToProps = state => ({
+  ...state.topics
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewTopic);
