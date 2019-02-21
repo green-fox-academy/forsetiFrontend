@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { getTopics } from '../actions/topics';
+import Button from '@material-ui/core/Button';
 import history from '../history';
 
 const Topics = ({ topics, getTopics }) => (

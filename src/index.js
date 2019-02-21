@@ -12,6 +12,7 @@ import Topics from './containers/Topic';
 import Questionnaire from './containers/Questionnaire';
 import NPS from './components/NPS';
 import Home from './components/Home';
+import MainScreen from './containers/MainScreen';
 
 function configureStore(initialState) {
   return createStore(
@@ -28,10 +29,10 @@ const baseComponent =
     <Provider store={store}>
       <App >
         <Route exact path="/" component={Topics} />
+        <Route exact path="/screen" component={MainScreen} />
         <Route exact path="/questionnaire/:topic" component={Questionnaire} />
         <Route exact path="/nps/:topic" component={NPS} />
         <Route exact path="/hi" component={Home} />
-
       </App>
     </Provider>
   </Router>;
