@@ -32,5 +32,6 @@ export default (state = initialState, { type, payload }) => {
 
 
 const addToQuestionIfNotExists = (questions, question) =>
-  questions.map(q => q._id === question._id ? q = question : q);
+  questions ?
+    questions.map(q => q._id === question._id ? q = question : q) : false;
 

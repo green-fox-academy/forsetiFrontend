@@ -6,7 +6,7 @@ import {
 
 import { sendHBodyWithMethod } from './utils';
 
-const BASE_URI = 'http://52.29.62.92:3000/test';
+const BASE_URI = 'http://52.29.62.92:3000/baguette';
 
 
 export const load_questions = questions => ({

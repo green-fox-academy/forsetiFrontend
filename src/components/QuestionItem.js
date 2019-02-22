@@ -39,7 +39,6 @@ const QuestionItem = ({ question }) => (
         </Typography>
       </CardContent>
       <CardActionArea style={styles.deleteButton}>
-        {/* <Typography gutterBottom>DEL</Typography> */}
         <Delete />
       </CardActionArea>
     </Card>

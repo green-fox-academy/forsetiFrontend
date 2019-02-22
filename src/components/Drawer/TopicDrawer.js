@@ -7,7 +7,7 @@ import NewTopic from '../NewTopic';
 
 
 const TopicDrawer = ({ topics, getTopics }) =>
-  <Drawer variant="permanent" color="secondary" >
+  <div>
     <List>
       <ListItem>
         <ListItemText color="primary" primary="Forseti" secondary="the questionnaire" />
@@ -15,12 +15,13 @@ const TopicDrawer = ({ topics, getTopics }) =>
     </List>
     <Divider />
     <List>
+      <NewTopic />
       {
         drawer(topics, getTopics)
       }
-      <NewTopic />
     </List>
-  </Drawer >;
+  </div>
+  ;
 
 const drawer = (topics, getTopics) =>
   topics.length > 0 ? renderTopics(topics) : fetchAndLoad(getTopics);
@@ -31,7 +32,7 @@ const fetchAndLoad = getTopics => {
 };
 
 const renderTopics = topics => topics.map((text, index) => (
-  <ListItem button key={index} onClick={() => { }}>
+  <ListItem button key={index} onClick={() => { }} >
     <ListItemText primary={text} />
   </ListItem>
 ));

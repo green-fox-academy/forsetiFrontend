@@ -18,6 +18,9 @@ const styles = createStyles({
   },
   card: {
     padding: 20,
+  },
+  wordWrapper: {
+    wordBreak: 'break-all'
   }
 });
 
@@ -38,14 +41,14 @@ export const Question = ({ question }) => {
 };
 
 const generateButtons = question =>
-  question.answers.length > 0
+  question.answers.length >= 0
     ? question.answers.sort((ans1, ans2) => ans2.occurancy - ans1.occurancy)
       .map(answer =>
-        <AnswerButton key={answer._id} answer={answer} questionId={question._id} />)
-    : <div>No answer yet...</div>;
+        <AnswerButton key={answer._id} answer={answer} questionId={question._id} style={styles.wordWrapper} />)
+    : (<div>No answer yet...</div>);
 
 const mapStateToProps = state => ({
-  questions: state.question.questions
+  ...state.question
 });
 
 
