@@ -16,8 +16,10 @@
     "@material-ui/styles": "3.0.0-alpha.10",
     "@material-ui/system": "3.0.0-alpha.2",
     "babel-polyfill": "6.26.0",
+    "dotenv": "6.2.0",
+    "firebase": "5.8.4",
     "history": "4.7.2",
-    "lodash": "4.17.10",
+    "lodash": "4.17.11",
     "material-ui": "0.20.2",
     "react": "16.8.2",
     "react-dom": "16.8.2",
@@ -38,7 +40,7 @@
     "eslint-plugin-react": "7.9.1",
     "mocha": "5.2.0",
     "node-sass": "4.11.0",
-    "parcel-bundler": "1.8.1",
+    "parcel-bundler": "1.11.0",
     "postcss-modules": "1.1.0"
   }
 }

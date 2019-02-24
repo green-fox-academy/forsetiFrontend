@@ -6,6 +6,8 @@ import {
 
 import { sendHBodyWithMethod } from './utils';
 
+import { app } from './firebase';
+
 const BASE_URI = 'http://52.29.62.92:3000/baguette';
 
 
