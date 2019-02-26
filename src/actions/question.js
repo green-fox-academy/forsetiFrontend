@@ -3,13 +3,10 @@ import {
   NEW_QUESTION,
   UPDATED_QUESTION
 } from '../constants/action_types';
-
 import { sendHBodyWithMethod } from './utils';
 
-import { app } from './firebase';
 
 const BASE_URI = 'http://52.29.62.92:3000/baguette';
-
 
 export const load_questions = questions => ({
   type: FECTH_QUESTIONS,

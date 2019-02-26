@@ -21,10 +21,9 @@ const theme = createMuiTheme({
 
 const MainScreen = () => (
   <MuiThemeProvider theme={theme} >
-
     <div style={{ display: 'flex', flexDirection: 'row' }}>
       <TopicDrawer style={{ maxWidth: '15em', width: '200px' }} />
-      <Questionnaire />
+      {/* <Questionnaire /> */}
     </div>
   </MuiThemeProvider>
 );

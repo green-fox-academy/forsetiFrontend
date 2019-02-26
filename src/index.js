@@ -2,37 +2,23 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route } from 'react-router-dom';
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import rootReducer from './reducers';
 import App from './App';
-import history from './history';
-import Topics from './containers/Topic';
-import Questionnaire from './containers/Questionnaire';
-import NPS from './components/NPS';
-import Home from './components/Home';
 import MainScreen from './containers/MainScreen';
+import history from './history';
 
-function configureStore(initialState) {
-  return createStore(
-    rootReducer, initialState,
-    applyMiddleware(thunk)
-  );
-}
+const initialState = window && window.__INITIAL_STATE__; // set initial state here
 
-const store = configureStore({});
+import configureStore from './store/index';
+
+const store = configureStore(initialState);
 
 const reactRoot = document.getElementById('react-root');
 const baseComponent =
   <Router history={history}>
     <Provider store={store}>
       <App >
-        <Route exact path="/" component={Topics} />
-        <Route exact path="/screen" component={MainScreen} />
-        <Route exact path="/questionnaire/:topic" component={Questionnaire} />
-        <Route exact path="/nps/:topic" component={NPS} />
-        <Route exact path="/hi" component={Home} />
+        <Route exact path="/" component={MainScreen} />
       </App>
     </Provider>
   </Router>;

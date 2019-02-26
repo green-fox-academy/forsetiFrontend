@@ -2,9 +2,8 @@ import React from 'react';
 import { Fab, TextField, CardActions, CardContent, Card } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import { connect } from 'react-redux';
-import { addNewTopic } from '../actions/topics';
 
-const NewTopic = ({ addNewTopic, topics }) => (
+const NewTopic = ({ topics }) => (
   <Card color="primary">
     <CardContent>
       <TextField
@@ -17,8 +16,8 @@ const NewTopic = ({ addNewTopic, topics }) => (
         size="small"
         color="secondary"
         onClick={() => {
-          const newTopicElement = document.getElementById('new');
-          addIfNotExists(topics, newTopicElement, addNewTopic);
+          const newTopicElement = document.getElementById('new').value;
+          addNewTopic(newTopicElement);
         }}>
         <AddIcon />
       </Fab>
@@ -26,17 +25,16 @@ const NewTopic = ({ addNewTopic, topics }) => (
   </Card>
 );
 
-const topicNotExists = (topics, newTopic) => !topics.includes(newTopic.value);
-
-const addIfNotExists = (topics, newTopic, addNewTopic) =>
-  topicNotExists(topics, newTopic) ? addNewTopic(newTopic.value) : newTopic.value = '';
-
-const mapDispatchToProps = {
-  addNewTopic
+const addNewTopic = topicName => {
+  if (topicName && topicName !== '') {
+    database.ref('questionnaire').push({
+      topic: topicName
+    });
+  }
 };
 
 const mapStateToProps = state => ({
   ...state.topics
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewTopic);
+export default connect(mapStateToProps)(NewTopic);
