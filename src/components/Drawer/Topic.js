@@ -7,7 +7,7 @@ import {
   isEmpty,
   withFirebase,
 } from 'react-redux-firebase';
-import { withHandlers } from 'recompose';
+import { withHandlers, withState } from 'recompose';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Card from '@material-ui/core/Card';
@@ -15,14 +15,18 @@ import NewTopic from './NewTopic';
 import List from '@material-ui/core/List';
 import { Delete } from '@material-ui/icons';
 
+import { changeTopic } from '../../actions/topics';
 
-const generateTopics = (topics, deleteQuestionnare) =>
+
+const generateTopics = (topics, deleteQuestionnare, choosenTopic, changeTopic) =>
   topics.map(topic => (
     <Card
       style={{ marginBottom: 15 }}
     >
       <Button
         key={topic.key}
+        style={{ backgroundColor: topic.key === choosenTopic ? 'grey' : 'white' }}
+        onClick={() => changeTopic(topic.key)}
       >
         {topic.value.topic || 'no title yet'}
       </Button >
@@ -34,7 +38,7 @@ const generateTopics = (topics, deleteQuestionnare) =>
       </Button>
     </Card>));
 
-const Topics = ({ topics, deleteQuestionnare }) => (
+const Topics = ({ topics, deleteQuestionnare, choosenTopic, changeTopic }) => (
   <List>
     <NewTopic style={{ marginBottom: 15 }} />
     {
@@ -42,7 +46,7 @@ const Topics = ({ topics, deleteQuestionnare }) => (
         ? <CircularProgress />
         : isEmpty(topics)
           ? 'Topics are empty'
-          : generateTopics(topics, deleteQuestionnare)
+          : generateTopics(topics, deleteQuestionnare, choosenTopic, changeTopic)
     }
   </List>
 );
@@ -51,12 +55,18 @@ const enhance = compose(
   withFirebase,
   firebaseConnect(() => ['questionnaire']),
   withHandlers({
-    deleteQuestionnare: props => id => props.firebase.ref(`questionnaire/${id}`).remove()
+    deleteQuestionnare: props => id => props.firebase.ref(`questionnaire/${id}`).remove(),
   }),
   connect(
-    ({ firebase }) => ({
-      topics: firebase.ordered.questionnaire,
-    })
+    ({ firebase, topics }) =>
+      ({
+        topics: firebase.ordered.questionnaire,
+        choosenTopic: topics.topicID
+      }),
+
+    {
+      changeTopic
+    }
   )
 );
 

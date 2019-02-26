@@ -31,6 +31,7 @@
     "react-router-dom": "4.3.1",
     "recompose": "0.30.0",
     "redux": "4.0.0",
+    "redux-actions": "2.6.4",
     "redux-firebase": "0.3.3",
     "redux-firestore": "0.7.0",
     "redux-thunk": "2.3.0",

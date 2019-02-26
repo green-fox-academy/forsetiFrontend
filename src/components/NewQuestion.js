@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Card, CardContent, Button, CardActions, TextField } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import { connect } from 'react-redux';
-import { addQuestion } from '../actions/question';
 
 
 class NewQuestion extends Component {
@@ -45,9 +44,10 @@ class NewQuestion extends Component {
         <CardActions>
           <Button
             title={'ADD Question'}
-            onClick={() =>
-              this.props.addQ({ text: this.state.text, body: this.state.body })
-            }>
+            onClick={ () => {}
+              // this.props.addQ({ text: this.state.text, body: this.state.body })
+            }
+          >
             <AddIcon >
               +
             </AddIcon>
@@ -60,7 +60,7 @@ class NewQuestion extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  addQ: ({ text, body }) => dispatch(addQuestion({ text, body })),
+  // addQ: ({ text, body }) => dispatch(addQuestion({ text, body })),
 });
 
 export default connect(null, mapDispatchToProps)(NewQuestion);

@@ -1,12 +1,3 @@
-import { FETCH_TOPICS, NEW_TOPIC } from '../constants/action_types';
+import { createAction } from 'redux-actions';
 
-export const fetch_topics = topics => ({
-  type: FETCH_TOPICS,
-  payload: topics,
-});
-
-export const new_topic = result => ({
-  type: NEW_TOPIC,
-  payload: result,
-});
-
+export const changeTopic = createAction('CHANGE_TOPIC');

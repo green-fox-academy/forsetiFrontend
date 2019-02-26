@@ -19,8 +19,6 @@ const NewTopic = ({ addQuestionnaire }) => (
     </CardContent>
     <CardActions>
       <Fab
-        size="small"
-        color="secondary"
         onClick={() => {
           const newTopicElement = document.getElementById('new');
           addQuestionnaire(newTopicElement.value);
@@ -43,7 +41,7 @@ const enhance = compose(
     }
   }),
   connect(
-    ({ firebase }) => ({
+    ({ firebase, topics }) => ({
       topics: firebase.ordered.questionnaire,
     })
   )

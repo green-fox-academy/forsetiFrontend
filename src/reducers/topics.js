@@ -1,24 +1,19 @@
-import { FETCH_TOPICS, NEW_TOPIC } from '../constants/action_types';
+import { changeTopic } from '../actions/topics';
+import { handleActions } from 'redux-actions';
+
+const defaultState = { topicID: '' };
+
+const reducer = handleActions(
+  new Map([
+    [
+      changeTopic,
+      (state, action) => ({
+        topicID: action.payload
+      })
+    ],
+  ]),
+  defaultState
+);
 
 
-const initialState = {
-  topics: []
-};
-
-export default (state = initialState, { type, payload }) => {
-  switch (type) {
-    case FETCH_TOPICS:
-      return {
-        ...state,
-        topics: [...payload],
-      };
-    case NEW_TOPIC:
-      return {
-        ...state,
-        topics: [...state.topics, payload]
-      };
-    default:
-      return state;
-  }
-};
-
+export default reducer;

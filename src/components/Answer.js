@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Fab, TextField, Card } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import { addAnswerToQuestion } from '../actions/question';
 
 const Answer = ({ questionId, addAnswerToQuestion }) => (
   <div style={{ margin: 25 }}>
@@ -15,7 +14,7 @@ const Answer = ({ questionId, addAnswerToQuestion }) => (
       color="secondary"
       onClick={() => {
         const text = document.getElementById(`${questionId}`).value;
-        sendIfNotEmpty(questionId, text, addAnswerToQuestion);
+        // sendIfNotEmpty(questionId, text, addAnswerToQuestion);
       }}>
       <AddIcon />
     </Fab>
@@ -27,7 +26,7 @@ const sendIfNotEmpty = (questionId, text, addAnswerToQuestion) => validNewAnswer
 const validNewAnswer = text => text !== null && text.trim() !== '';
 
 const mapDispatchToProps = {
-  addAnswerToQuestion
+  
 };
 
 export default connect(null, mapDispatchToProps)(Answer);
