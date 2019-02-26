@@ -36,7 +36,11 @@ const enhance = compose(
   withFirebase,
   firebaseConnect(() => ['questionnaire']),
   withHandlers({
-    addQuestionnaire: props => topicName => props.firebase.ref('questionnaire').push({ topic: topicName })
+    addQuestionnaire: props => topicName => {
+      if (topicName !== '') {
+        return props.firebase.ref('questionnaire').push({ topic: topicName });
+      }
+    }
   }),
   connect(
     ({ firebase }) => ({
