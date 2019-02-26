@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Divider, Drawer, CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
 import NewTopic from './NewTopic';
-import Topic from './Topic';;
+import Topic from './Topic';
 
-const TopicDrawer = () =>
+const TopicDrawer = () => (
   <div>
     <List>
       <ListItem>
@@ -16,7 +16,7 @@ const TopicDrawer = () =>
       <Topic></Topic>
     </List>
   </div>
-  ;
+);
 
 
 export default (TopicDrawer);

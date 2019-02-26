@@ -8,16 +8,12 @@ import {
   withFirebase,
 } from 'react-redux-firebase';
 import { withHandlers } from 'recompose';
-import Button from '@material-ui/core/Button';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Card from '@material-ui/core/Card';
-import NewTopic from './NewTopic';
-import List from '@material-ui/core/List';
+import { Card, CircularProgress, List, Button } from '@material-ui/core';
 import { Delete } from '@material-ui/icons';
-
+import NewTopic from './NewTopic';
 import { changeTopic } from '../../actions/topics';
 
-const generateTopics = (topics, deleteQuestionnare, choosenTopic, changeTopic) =>
+const generateTopics = (topics, deleteTopic, choosenTopic, changeTopic) =>
   topics.map(topic => (
     <Card
       style={{ marginBottom: 15 }}
@@ -31,35 +27,40 @@ const generateTopics = (topics, deleteQuestionnare, choosenTopic, changeTopic) =
       </Button >
       <Button
         key={`${topic.key}DEL`}
-        onClick={() => deleteQuestionnare(topic.key)}
+        onClick={() => deleteTopic(topic.key)}
       >
         <Delete />
       </Button>
     </Card>));
 
-const Topics = ({ topics, deleteQuestionnare, choosenTopic, changeTopic }) => (
+const Topics = ({ topics, deleteTopic, choosenTopic, changeTopic, addTopic }) => (
   <List>
-    <NewTopic style={{ marginBottom: 15 }} />
+    <NewTopic style={{ marginBottom: 15 }} addTopic={addTopic} />
     {
       !isLoaded(topics)
         ? <CircularProgress />
         : isEmpty(topics)
           ? 'Topics are empty'
-          : generateTopics(topics, deleteQuestionnare, choosenTopic, changeTopic)
+          : generateTopics(topics, deleteTopic, choosenTopic, changeTopic)
     }
   </List>
 );
 
 const enhance = compose(
   withFirebase,
-  firebaseConnect(() => ['questionnaire']),
+  firebaseConnect(() => ['topic']),
   withHandlers({
-    deleteQuestionnare: props => id => props.firebase.ref(`questionnaire/${id}`).remove(),
+    deleteTopic: props => id => props.firebase.ref(`topic/${id}`).remove(),
+    addTopic: props => topicName => {
+      if (topicName !== '') {
+        return props.firebase.ref('topic').push({ topic: topicName });
+      }
+    }
   }),
   connect(
     ({ firebase, topics }) =>
       ({
-        topics: firebase.ordered.questionnaire,
+        topics: firebase.ordered.topic,
         choosenTopic: topics.topicID
       }),
     {
