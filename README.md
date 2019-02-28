@@ -11,6 +11,7 @@ Includes
  - PostCSS + SCSS for styling
  - Mocha for Testing
 
+stg
 Lets start!
 
  1. Clone Repo
