@@ -15,7 +15,7 @@ import createSocketIoMiddleware from 'redux-socket.io';
 
 let socket = io('http://localhost:3003');
 
-const socketIoMiddleware = createSocketIoMiddleware(socket, 'server/');
+const socketIoMiddleware = createSocketIoMiddleware(socket, 'server');
 
 const configureStore = initialState => createStore(
   rootReducer, initialState,

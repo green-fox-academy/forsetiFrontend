@@ -9,20 +9,10 @@ export const fetch_question = question => ({
   payload: question,
 });
 
-export const addTopic = topic => {
-  return {
-    type: 'addtopic',
-    meta: { remote: true },
-    payload: topic
-  }
-}
-
-export const topicAdded = () => {
-  return {
-    type: 'topicadded',
-    // meta: { remote: true },
-  }
-}
+export const addTopic = topic => ({
+  type: 'server/addtopic',
+  data: topic
+})
 
 export const getTopicsWS = () => ({
   type: 'server/gettopics',

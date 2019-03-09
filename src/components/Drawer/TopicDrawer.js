@@ -4,13 +4,17 @@ import PropTypes from 'prop-types';
 import { Divider, Drawer, CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { getTopicsWS } from '../../actions/topics';
-import NewTopic from '../NewTopic';
+import NewTopic from './NewTopic';
 
 const TopicDrawer = ({ topics, getTopicsWS }) =>
   <div>
     <List>
       <ListItem>
-        <ListItemText color="primary" primary="Forseti" secondary="the questionnaire" />
+        <ListItemText
+          color="primary"
+          primary="Forseti"
+          secondary="the questionnaire"
+          style={{ textAlign: 'center' }} />
       </ListItem>
     </List>
     <Divider />
@@ -24,7 +28,7 @@ const TopicDrawer = ({ topics, getTopicsWS }) =>
   ;
 
 const drawer = (topics, getTopicsWS) =>
-  topics.length > 0 ? renderTopics(topics) : fetchAndLoad(getTopicsWS);
+  topics ? renderTopics(topics) : fetchAndLoad(getTopicsWS);
 
 const fetchAndLoad = getTopicsWS => {
   getTopicsWS();
@@ -40,7 +44,7 @@ const renderTopics = topics => topics.map((text, index) => (
 TopicDrawer.propTypes = {
   container: PropTypes.object,
   getTopicsWS: PropTypes.func.isRequired,
-  topics: PropTypes.array.isRequired,
+  topics: PropTypes.array,
 };
 
 const mapStateToProps = state => ({

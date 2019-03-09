@@ -1,22 +1,15 @@
 import { FETCH_TOPICS } from '../constants/action_types';
 
 const initialState = {
-  topics: []
+  topics: undefined
 };
 
 export default (state = initialState, { type, payload, data }) => {
-
+  console.log(type, data);
   switch (type) {
-    case FETCH_TOPICS:
+    case 'server/topics':
       return {
-        ...state,
-        topics: [...payload],
-      };
-    case 'message':
-
-      return {
-        ...state,
-        topics: data
+        topics: [...data]
       };
     default:
       return state;
