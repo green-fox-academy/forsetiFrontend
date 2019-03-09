@@ -1,20 +1,22 @@
-import { FETCH_TOPICS, NEW_TOPIC } from '../constants/action_types';
+import { FETCH_TOPICS } from '../constants/action_types';
 
 const initialState = {
   topics: []
 };
 
-export default (state = initialState, { type, payload }) => {
+export default (state = initialState, { type, payload, data }) => {
+
   switch (type) {
     case FETCH_TOPICS:
       return {
         ...state,
         topics: [...payload],
       };
-    case NEW_TOPIC:
+    case 'message':
+
       return {
         ...state,
-        topics: [...state.topics, payload]
+        topics: data
       };
     default:
       return state;

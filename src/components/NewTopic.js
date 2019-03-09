@@ -2,9 +2,9 @@ import React from 'react';
 import { Fab, TextField, CardActions, CardContent, Card } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import { connect } from 'react-redux';
-import { addNewTopic } from '../actions/topics';
+import { addNewTopic, addTopic } from '../actions/topics';
 
-const NewTopic = ({ addNewTopic, topics }) => (
+const NewTopic = ({ topics, addTopic }) => (
   <Card color="primary">
     <CardContent>
       <TextField
@@ -18,7 +18,7 @@ const NewTopic = ({ addNewTopic, topics }) => (
         color="secondary"
         onClick={() => {
           const newTopicElement = document.getElementById('new');
-          addIfNotExists(topics, newTopicElement, addNewTopic);
+          addIfNotExists(topics, newTopicElement, addTopic);
         }}>
         <AddIcon />
       </Fab>
@@ -28,11 +28,11 @@ const NewTopic = ({ addNewTopic, topics }) => (
 
 const topicNotExists = (topics, newTopic) => !topics.includes(newTopic.value);
 
-const addIfNotExists = (topics, newTopic, addNewTopic) =>
-  topicNotExists(topics, newTopic) ? addNewTopic(newTopic.value) : newTopic.value = '';
+const addIfNotExists = (topics, newTopic, addTopic) =>
+  topicNotExists(topics, newTopic) ? addTopic({ title: newTopic.value }) : newTopic.value = '';
 
 const mapDispatchToProps = {
-  addNewTopic
+  addTopic
 };
 
 const mapStateToProps = state => ({

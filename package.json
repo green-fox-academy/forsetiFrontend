@@ -25,8 +25,11 @@
     "react-redux": "5.0.7",
     "react-router-dom": "4.3.1",
     "redux": "4.0.0",
+    "redux-socket.io": "1.4.0",
+    "redux-socket.io-middleware": "1.0.4",
     "redux-thunk": "2.3.0",
-    "reselect": "3.0.1"
+    "reselect": "3.0.1",
+    "socket.io-client": "2.2.0"
   },
   "devDependencies": {
     "autoprefixer": "8.6.2",

@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import { createMuiTheme, MuiThemeProvider, AppBar, createStyles } from '@material-ui/core';
+/* eslint-disable no-unused-vars */
+import React from 'react';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 import TopicDrawer from '../components/Drawer/TopicDrawer';
 import Questionnaire from './Questionnaire';
 import palette from '../styles/theme.json';
@@ -21,10 +22,9 @@ const theme = createMuiTheme({
 
 const MainScreen = () => (
   <MuiThemeProvider theme={theme} >
-
     <div style={{ display: 'flex', flexDirection: 'row' }}>
       <TopicDrawer style={{ maxWidth: '15em', width: '200px' }} />
-      <Questionnaire />
+      {/* <Questionnaire /> */}
     </div>
   </MuiThemeProvider>
 );

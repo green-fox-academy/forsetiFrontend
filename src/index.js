@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -8,18 +9,17 @@ import { Provider } from 'react-redux';
 import rootReducer from './reducers';
 import App from './App';
 import history from './history';
-import Topics from './containers/Topic';
-import Questionnaire from './containers/Questionnaire';
-import NPS from './components/NPS';
-import Home from './components/Home';
 import MainScreen from './containers/MainScreen';
+import io from 'socket.io-client';
+import createSocketIoMiddleware from 'redux-socket.io';
 
-function configureStore(initialState) {
-  return createStore(
-    rootReducer, initialState,
-    applyMiddleware(thunk)
-  );
-}
+let socket = io('http://localhost:3003');
+
+const socketIoMiddleware = createSocketIoMiddleware(socket, 'server/');
+
+const configureStore = initialState => createStore(
+  rootReducer, initialState,
+  applyMiddleware(thunk, socketIoMiddleware));
 
 const store = configureStore({});
 
@@ -28,11 +28,7 @@ const baseComponent =
   <Router history={history}>
     <Provider store={store}>
       <App >
-        <Route exact path="/" component={Topics} />
-        <Route exact path="/screen" component={MainScreen} />
-        <Route exact path="/questionnaire/:topic" component={Questionnaire} />
-        <Route exact path="/nps/:topic" component={NPS} />
-        <Route exact path="/hi" component={Home} />
+        <Route exact path="/" component={MainScreen} />
       </App>
     </Provider>
   </Router>;

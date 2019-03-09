@@ -1,6 +1,6 @@
 import { FETCH_TOPICS, NEW_TOPIC } from '../constants/action_types';
 
-const BASE_URI = 'http://52.29.62.92:3000';
+const BASE_URI = 'http://localhost:3002/';
 import { sendHBodyWithMethod } from './utils';
 
 
@@ -9,6 +9,26 @@ export const fetch_question = question => ({
   payload: question,
 });
 
+export const addTopic = topic => {
+  return {
+    type: 'addtopic',
+    meta: { remote: true },
+    payload: topic
+  }
+}
+
+export const topicAdded = () => {
+  return {
+    type: 'topicadded',
+    // meta: { remote: true },
+  }
+}
+
+export const getTopicsWS = () => ({
+  type: 'server/gettopics',
+})
+
+
 export const new_topic = result => ({
   type: NEW_TOPIC,
   payload: result.topic,
@@ -16,7 +36,7 @@ export const new_topic = result => ({
 
 export const getTopics = () => {
   return async dispatch => {
-    const response = await fetch(`${BASE_URI}/topics`);
+    const response = await fetch(`${BASE_URI}/topic`);
     const json = await response.json();
     return dispatch(fetch_question(json));
   };
